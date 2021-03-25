@@ -24,21 +24,31 @@ public class YardConvertorFactory implements UnitConvertFactory {
     }
 
     @Override
-    public List<Map<BigDecimal, Unit>> convert(UnitInput input) {
+    public List<Map<BigDecimal, Unit>> convert(BigDecimal value) {
         List<Map<BigDecimal, Unit>> result = new ArrayList<>();
 
         HashMap<BigDecimal, Unit> yardMap = new HashMap<>(1);
-        yardMap.put(input.getValue(), Unit.YARD);
+        yardMap.put(value, Unit.YARD);
         result.add(yardMap);
 
         HashMap<BigDecimal, Unit> feetMap = new HashMap<>(1);
-        feetMap.put(input.getValue().multiply(BigDecimal.valueOf(3L)), Unit.FEET);
+        UnitInput yardConvert2Feet = yardConvert2Feet(value);
+        feetMap.put(yardConvert2Feet.getValue(), yardConvert2Feet.getUnit());
         result.add(feetMap);
 
         HashMap<BigDecimal, Unit> inchMap = new HashMap<>(1);
-        inchMap.put(input.getValue().multiply(BigDecimal.valueOf(36L)), Unit.INCH);
+        UnitInput yardConvert2Inch = yardConvert2Inch(value);
+        inchMap.put(yardConvert2Inch.getValue(), yardConvert2Inch.getUnit());
         result.add(inchMap);
 
         return result;
+    }
+
+    private UnitInput yardConvert2Feet(BigDecimal value) {
+        return new UnitInput(value.multiply(BigDecimal.valueOf(3L)), Unit.FEET);
+    }
+
+    private UnitInput yardConvert2Inch(BigDecimal value) {
+        return new UnitInput(value.multiply(BigDecimal.valueOf(36L)), Unit.INCH);
     }
 }

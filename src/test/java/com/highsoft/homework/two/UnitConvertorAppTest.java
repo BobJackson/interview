@@ -23,8 +23,8 @@ public class UnitConvertorAppTest {
     @Test
     public void testConvert() {
         shouldWorkEvenWithoutUnit();
-        shouldRightWhen5Yard();
-        shouldRightWhen4Feet();
+        shouldBeRightWhen5Yard();
+        shouldBeRightWhen4Feet();
         shouldWorkWhen6Inch();
         shouldWorkWhenNonInteger();
     }
@@ -39,12 +39,12 @@ public class UnitConvertorAppTest {
         assertEquals("[{ value=0.17, unit=YARD}{ value=0.50, unit=FEET}{ value=6, unit=INCH}]", display.toString());
     }
 
-    private void shouldRightWhen4Feet() {
+    private void shouldBeRightWhen4Feet() {
         UnitDisplay display = app.convert(new UnitInput(BigDecimal.valueOf(4), Unit.FEET));
         assertEquals("[{ value=1.33, unit=YARD}{ value=4, unit=FEET}{ value=48, unit=INCH}]", display.toString());
     }
 
-    private void shouldRightWhen5Yard() {
+    private void shouldBeRightWhen5Yard() {
         UnitDisplay display = app.convert(new UnitInput(BigDecimal.valueOf(5), Unit.YARD));
         assertEquals("[{ value=5, unit=YARD}{ value=15, unit=FEET}{ value=180, unit=INCH}]", display.toString());
     }

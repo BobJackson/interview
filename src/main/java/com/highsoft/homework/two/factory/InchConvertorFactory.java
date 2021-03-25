@@ -24,22 +24,38 @@ public class InchConvertorFactory implements UnitConvertFactory {
     }
 
     @Override
-    public List<Map<BigDecimal, Unit>> convert(UnitInput input) {
+    public List<Map<BigDecimal, Unit>> convert(BigDecimal value) {
         List<Map<BigDecimal, Unit>> result = new ArrayList<>();
 
         HashMap<BigDecimal, Unit> yardMap = new HashMap<>(1);
-        yardMap.put(input.getValue().divide(BigDecimal.valueOf(36L), getConfig().getScale(), BigDecimal.ROUND_HALF_UP), Unit.YARD);
+        UnitInput convert2Yard = inchConvert2Yard(value);
+        yardMap.put(convert2Yard.getValue(), convert2Yard.getUnit());
         result.add(yardMap);
 
         HashMap<BigDecimal, Unit> feetMap = new HashMap<>(1);
-        feetMap.put(input.getValue().divide(BigDecimal.valueOf(12L), getConfig().getScale(), BigDecimal.ROUND_HALF_UP), Unit.FEET);
+        UnitInput convert2Feet = inchConvert2Feet(value);
+        feetMap.put(convert2Feet.getValue(), convert2Feet.getUnit());
         result.add(feetMap);
 
         HashMap<BigDecimal, Unit> inchMap = new HashMap<>(1);
-        inchMap.put(input.getValue(), Unit.INCH);
+        inchMap.put(value, Unit.INCH);
         result.add(inchMap);
 
         return result;
+    }
+
+    private UnitInput inchConvert2Yard(BigDecimal value) {
+        return new UnitInput(value.divide(BigDecimal.valueOf(36L)
+                , getConfig().getScale()
+                , getConfig().getRoundingMode()
+        ), Unit.YARD);
+    }
+
+    private UnitInput inchConvert2Feet(BigDecimal value) {
+        return new UnitInput(value.divide(BigDecimal.valueOf(12L)
+                , getConfig().getScale()
+                , getConfig().getRoundingMode()
+        ), Unit.FEET);
     }
 
 

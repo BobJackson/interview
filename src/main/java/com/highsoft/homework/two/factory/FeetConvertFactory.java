@@ -24,19 +24,34 @@ public class FeetConvertFactory implements UnitConvertFactory {
     }
 
     @Override
-    public List<Map<BigDecimal, Unit>> convert(UnitInput input) {
+    public List<Map<BigDecimal, Unit>> convert(BigDecimal value) {
         List<Map<BigDecimal, Unit>> result = new ArrayList<>();
+
         HashMap<BigDecimal, Unit> yardMap = new HashMap<>(1);
-        yardMap.put(input.getValue().divide(BigDecimal.valueOf(3L), getConfig().getScale(), BigDecimal.ROUND_HALF_UP), Unit.YARD);
+        UnitInput convert2Yard = feetConvert2Yard(value);
+        yardMap.put(convert2Yard.getValue(), convert2Yard.getUnit());
         result.add(yardMap);
 
         HashMap<BigDecimal, Unit> feetMap = new HashMap<>(1);
-        feetMap.put(input.getValue(), Unit.FEET);
+        feetMap.put(value, Unit.FEET);
         result.add(feetMap);
 
         HashMap<BigDecimal, Unit> inchMap = new HashMap<>(1);
-        inchMap.put(input.getValue().multiply(BigDecimal.valueOf(12L)), Unit.INCH);
+        UnitInput convert2Inch = feetConvert2Inch(value);
+        inchMap.put(convert2Inch.getValue(), convert2Inch.getUnit());
         result.add(inchMap);
         return result;
     }
+
+    private UnitInput feetConvert2Yard(BigDecimal value) {
+        return new UnitInput(value.divide(BigDecimal.valueOf(3L)
+                , getConfig().getScale()
+                , getConfig().getRoundingMode()
+        ), Unit.YARD);
+    }
+
+    private UnitInput feetConvert2Inch(BigDecimal value) {
+        return new UnitInput(value.multiply(BigDecimal.valueOf(12L)), Unit.INCH);
+    }
+
 }

@@ -17,7 +17,7 @@ public class UnitConvertFactoryTest {
 
     @Test
     public void convert() {
-        List<Map<BigDecimal, Unit>> list = factory.convert(new UnitInput(BigDecimal.valueOf(2), Unit.YARD));
+        List<Map<BigDecimal, Unit>> list = factory.convert(BigDecimal.valueOf(2));
         assertEquals("{2=YARD}", list.get(0).toString());
         assertEquals("{6=FEET}", list.get(1).toString());
         assertEquals("{72=INCH}", list.get(2).toString());
