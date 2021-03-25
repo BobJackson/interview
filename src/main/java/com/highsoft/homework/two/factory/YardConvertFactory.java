@@ -10,14 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class YardConvertorFactory implements UnitConvertFactory {
+public class YardConvertFactory implements UnitConvertFactory {
 
     private UnitDisplayConfig config;
 
-    public YardConvertorFactory() {
+    public YardConvertFactory() {
     }
 
-    public YardConvertorFactory(UnitDisplayConfig config) {
+    public YardConvertFactory(UnitDisplayConfig config) {
         this.config = config;
     }
 

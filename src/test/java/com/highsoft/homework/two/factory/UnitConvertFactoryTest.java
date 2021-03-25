@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class UnitConvertFactoryTest {
 
-    UnitConvertFactory factory = new YardConvertorFactory(UnitDisplayConfig.DEFAULT_CONFIG);
+    UnitConvertFactory factory = new YardConvertFactory(UnitDisplayConfig.DEFAULT_CONFIG);
 
     @Test
     public void convert() {
