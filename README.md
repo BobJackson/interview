@@ -14,6 +14,6 @@
 
 ![Image_text](UnitCovertFactory.png)
 
-### Homework three 这个例子完全参照TDD的实践来一步步编码完成的，前面两个例子并不完全是TDD的实践，尽管第一个FizzBuzz完全可以使用。
+### Homework three 这个例子完全参照TDD的实践来一步步编码完成的。
 具体的代码在com/highsoft/homework/three.  Homework two 的文档和代码结构都比较清晰，Homework three也基本上是这样结构，同时结构更简单，
 所以我就没有编写更多的文档注释。
