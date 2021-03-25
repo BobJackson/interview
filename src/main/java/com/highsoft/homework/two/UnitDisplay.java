@@ -9,6 +9,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 单位转换的输出，可以自定义显示配置来控制输出的格式，比如小数点位数，四舍五入的模式。不传使用默认的显示配置。
+ */
 public class UnitDisplay {
 
     private static final int LENGTH = Unit.values().length;

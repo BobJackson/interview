@@ -2,6 +2,9 @@ package com.highsoft.homework.two;
 
 import java.math.BigDecimal;
 
+/**
+ * 单位换算的显示配置，目前支持scale （小数点位数）和 roundingMode（四舍五入的模式，可以参考BigDecimal类）
+ */
 public class UnitDisplayConfig {
     private int scale;
     private int roundingMode;
