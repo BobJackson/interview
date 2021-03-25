@@ -35,9 +35,6 @@ public class FizzBuzzSolutionTest {
         assertEquals("Fizz", result.get(17));
         assertEquals("19", result.get(18));
         assertEquals("Buzz", result.get(19));
-        for (int i = 18; i < SCOPE; i++) {
-            System.out.println(result.get(i));
-        }
     }
 
     @Test
@@ -63,8 +60,5 @@ public class FizzBuzzSolutionTest {
         assertEquals("Fizz", result.get(17));
         assertEquals("19", result.get(18));
         assertEquals("Buzz", result.get(19));
-        for (int i = 18; i < SCOPE; i++) {
-            System.out.println(result.get(i));
-        }
     }
 }
