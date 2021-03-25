@@ -41,7 +41,7 @@ public class FizzBuzzSolutionTest {
     }
 
     @Test
-    public void fizzBuzzPlus(){
+    public void fizzBuzzPlus() {
         List<String> result = solution.fizzBuzzPlus(SCOPE);
         assertEquals("1", result.get(0));
         assertEquals("2", result.get(1));

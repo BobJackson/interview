@@ -54,4 +54,11 @@ public class UnitConvertorAppTest {
         assertEquals("[{ value=1, unit=YARD}{ value=3, unit=FEET}{ value=36, unit=INCH}]", display.toString());
     }
 
+    @Test
+    public void shouldWorkWithCustomizedConfig() {
+        UnitDisplayConfig config = new UnitDisplayConfig(3, 4);
+        UnitDisplay display = app.convert(new UnitInput(BigDecimal.valueOf(7), Unit.INCH), config);
+        assertEquals("[{ value=0.194, unit=YARD}{ value=0.583, unit=FEET}{ value=7, unit=INCH}]", display.toString());
+    }
+
 }

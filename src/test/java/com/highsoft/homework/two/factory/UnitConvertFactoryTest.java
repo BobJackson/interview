@@ -2,14 +2,13 @@ package com.highsoft.homework.two.factory;
 
 import com.highsoft.homework.two.Unit;
 import com.highsoft.homework.two.UnitDisplayConfig;
-import com.highsoft.homework.two.UnitInput;
 import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class UnitConvertFactoryTest {
 

@@ -2,7 +2,6 @@ package com.highsoft.homework.two.factory;
 
 import com.highsoft.homework.two.Unit;
 import com.highsoft.homework.two.UnitDisplayConfig;
-import com.highsoft.homework.two.UnitInput;
 import org.junit.Test;
 
 import java.math.BigDecimal;
@@ -11,9 +10,9 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-public class InchConvertorFactoryTest {
+public class InchConvertFactoryTest {
 
-    InchConvertorFactory factory = new InchConvertorFactory(UnitDisplayConfig.DEFAULT_CONFIG);
+    InchConvertFactory factory = new InchConvertFactory(UnitDisplayConfig.DEFAULT_CONFIG);
 
     @Test
     public void getConfig() {

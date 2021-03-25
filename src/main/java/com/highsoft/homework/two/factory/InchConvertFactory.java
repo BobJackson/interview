@@ -10,16 +10,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InchConvertorFactory implements UnitConvertFactory {
+public class InchConvertFactory implements UnitConvertFactory {
 
-    private final UnitDisplayConfig config;
+    private UnitDisplayConfig config;
 
-    @Override
-    public UnitDisplayConfig getConfig() {
-        return this.config;
+    public InchConvertFactory() {
     }
 
-    public InchConvertorFactory(UnitDisplayConfig config) {
+    public InchConvertFactory(UnitDisplayConfig config) {
         this.config = config;
     }
 
@@ -46,16 +44,26 @@ public class InchConvertorFactory implements UnitConvertFactory {
 
     private UnitInput inchConvert2Yard(BigDecimal value) {
         return new UnitInput(value.divide(BigDecimal.valueOf(36L)
-                , getConfig().getScale()
-                , getConfig().getRoundingMode()
+                , config.getScale()
+                , config.getRoundingMode()
         ), Unit.YARD);
     }
 
     private UnitInput inchConvert2Feet(BigDecimal value) {
         return new UnitInput(value.divide(BigDecimal.valueOf(12L)
-                , getConfig().getScale()
-                , getConfig().getRoundingMode()
+                , config.getScale()
+                , config.getRoundingMode()
         ), Unit.FEET);
+    }
+
+    @Override
+    public void setConfig(UnitDisplayConfig config) {
+        this.config = config;
+    }
+
+    @Override
+    public UnitDisplayConfig getConfig() {
+        return config;
     }
 
 

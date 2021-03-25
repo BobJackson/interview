@@ -12,11 +12,9 @@ import java.util.Map;
 
 public class FeetConvertFactory implements UnitConvertFactory {
 
-    private final UnitDisplayConfig config;
+    private UnitDisplayConfig config;
 
-    @Override
-    public UnitDisplayConfig getConfig() {
-        return this.config;
+    public FeetConvertFactory() {
     }
 
     public FeetConvertFactory(UnitDisplayConfig config) {
@@ -45,13 +43,23 @@ public class FeetConvertFactory implements UnitConvertFactory {
 
     private UnitInput feetConvert2Yard(BigDecimal value) {
         return new UnitInput(value.divide(BigDecimal.valueOf(3L)
-                , getConfig().getScale()
-                , getConfig().getRoundingMode()
+                , config.getScale()
+                , config.getRoundingMode()
         ), Unit.YARD);
     }
 
     private UnitInput feetConvert2Inch(BigDecimal value) {
         return new UnitInput(value.multiply(BigDecimal.valueOf(12L)), Unit.INCH);
+    }
+
+    @Override
+    public void setConfig(UnitDisplayConfig config) {
+        this.config = config;
+    }
+
+    @Override
+    public UnitDisplayConfig getConfig() {
+        return config;
     }
 
 }

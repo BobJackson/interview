@@ -9,5 +9,8 @@ import java.util.Map;
 
 public interface UnitConvertFactory {
     List<Map<BigDecimal, Unit>> convert(BigDecimal value);
+
+    void setConfig(UnitDisplayConfig config);
+
     UnitDisplayConfig getConfig();
 }
